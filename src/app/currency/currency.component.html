@@ -1,0 +1,80 @@
+<app-page-header [pageTitle]="title" [descriptionLines]="descriptionLines"></app-page-header>
+<!-- Main Search -->
+<div class="row row-gov">
+  <div class="col-10 col-lg-4 lg-mb-15 sm-mb-10 lg-pl-10">
+
+    <label class="labelFor" for="currencyType"></label>
+    <p-autoComplete aria-autocomplete="both" styleClass="w-100" role="combobox" class="CurrencyText"
+      inputStyleClass="reforma w-100 form-control txt gray-txt search-input text-right" [(ngModel)]="selectedCurrency"
+      [suggestions]="currencyTypeList" field="displayText" [size]="42" placeholder="בחירת מטבע..." [dropdown]="true"
+      inputId="currencyType" (completeMethod)="completeData()" (onClear)="searchData()" (onSelect)="searchData()"
+      (onDropdownClick)="selectedCurrency=null; searchData(); toggleDropdownVisibility();" [minLength]="1" autoHighlight
+      tabindex="13" [attr.aria-expanded]="isSuggestionsVisible ? true : false">
+    </p-autoComplete>
+  </div>
+  <div class="col-2 col-lg-8 lg-mb-15 xs-mb-25">
+    <p class="nounderline pull-left pointer" title="Excel-CSV" aria-label="להורדה בפורמט אקסל או CSV"
+      (click)="dt.exportCSV()">
+      <i class="icon icons-excel blue-txt social-size" style="color: #207245!important;" tabindex="14"></i>
+    </p>
+  </div>
+</div>
+
+
+<!-- Filter By Date -->
+<div class="row row-gov">
+
+  <div class="col-6 col-sm-2 col-lg-2 lg-mb-30 xs-mb-25 xs-pl-10">
+    <label class="labelFor" for="fromDate"></label>
+    <p-calendar #calendar1 inputId="fromDate" [(ngModel)]="fromDate" [showIcon]="true" [monthNavigator]="true"
+      [yearNavigator]="true" [yearRange]="yearRange" [locale]="heIL" [maxDate]="toDate" (onSelect)="searchData()"
+      dateFormat="dd/mm/yy" placeholder="מתאריך" (onFocus)="onCalendarShow()"
+      inputStyleClass="w-100 form-control txt gray-txt search-input text-right" tabindex="15">
+    </p-calendar>
+  </div>
+
+  <div class="col-6 col-sm-2 col-lg-2 lg-mb-30  xs-mb-25  xs-pl-10">
+    <label class="labelFor" for="toDate"></label>
+    <p-calendar #calendar2 inputId="toDate" [(ngModel)]="toDate" [showIcon]="true" [monthNavigator]="true"
+      [yearNavigator]="true" [yearRange]="yearRange" [locale]="heIL" [minDate]="fromDate" dateFormat="dd/mm/yy"
+      (onSelect)="searchData()" placeholder="עד תאריך"
+      inputStyleClass="w-100 form-control txt gray-txt search-input text-right" tabindex="16" enter="onCalendarShow()">
+    </p-calendar>
+  </div>
+</div>
+
+<!-- Table -->
+<p-table #myTable [value]="filteredData" [responsive]="true" [paginator]="true" [rows]="30" [first]="currentIndex"
+  (onFilter)="dt.reset()" [columns]="columns" #dt>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of columns; let i = index" [attr.tabindex]="i + 16" [pSortableColumn]="col.field"
+        class="white blue-txt none-border-blue pb-0 text-center">
+        {{col.header}}
+        <button class="SortBtn" aria-label="Sort by Name ascending">
+          <p-sortIcon class="sortIcon" pSortableColumn="col.field" ariaLabel="מיין" ariaLabelDesc="מיין בסדר יורד"
+            ariaLabelAsc="מיין בסדר יורד"></p-sortIcon>
+        </button>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-currencyTypeList>
+    <tr>
+
+      <td class="dark-grey-txt description-txt" *ngFor="let col of columns;let i = index" [attr.tabindex]="i + 16">
+        <!-- <span class="ui-column-title">{{col.header}}</span> -->
+        <ng-container *ngIf="(col.header=='מתאריך תוקף') || (col.header== 'עד תאריך תוקף')">
+          {{currencyTypeList[col.field] | fromatIEDate}}
+        </ng-container>
+        <ng-container *ngIf="(col.header=='שיעור מכס')">
+          {{currencyTypeList[col.field] | number : '1.8-8'}}
+        </ng-container>
+        <ng-container
+          *ngIf="(col.header!=='מתאריך תוקף') && (col.header!== 'עד תאריך תוקף')&&(col.header!== 'שיעור מכס')">
+          {{currencyTypeList[col.field]}}
+        </ng-container>
+
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
