@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'Angular19Basic' title`, () => {
+  it(`should have the 'CurrencyGates' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('Angular19Basic');
+    expect(app.title).toEqual('CurrencyGates');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, Angular19Basic');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, CurrencyGates');
   });
 });

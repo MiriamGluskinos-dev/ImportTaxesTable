@@ -6,16 +6,28 @@
     color: #285c7e !important;
 }
 
-::ng-deep .ng-star-inserted:not(.p-datatable-table .ng-star-inserted) {
+::ng-deep .p-autocomplete-input,
+::ng-deep .p-autocomplete-dropdown,
+::ng-deep .p-inputtext,
+::ng-deep .p-datepicker-trigger {
     border: none !important;
     background: none !important;
     color: #285c7e !important;
+    margin-bottom: 15px;
 }
 
+::ng-deep .p-autocomplete-input::placeholder {
+    color: #285c7e !important;
+}
 
 ::ng-deep .p-paginator {
     direction: ltr !important;
+}
 
+::ng-deep .p-paginator-element{
+    margin: 10px;
+    color: #285c7e !important;
+    text-decoration: none !important;
 }
 
 // ::ng-deep .ui-datepicker {
@@ -59,9 +71,13 @@
     padding: 5.5px !important;
 }
 
-.p-datatable {
+::ng-deep .p-datatable {
     //couldnt resolve
     min-height: 350px;
+}
+
+::ng-deep .p-datatable-table {
+    border: 1px solid #dee2e6;
 }
 
 tr:nth-child(odd) {
@@ -76,6 +92,7 @@ tr:nth-child(odd) {
 
 ::ng-deep .p-datatable th {
     width: 140px;
+    text-decoration: none;
 }
 
 ::ng-deep .p-autocomplete-item {
@@ -162,20 +179,6 @@ tr:nth-child(odd) {
     }
 }
 
-::ng-deep .ui-paginator-element {
-    background-color: white !important;
-    color: #285c7e;
-    font-weight: normal;
-    font-family: Arial;
-    font-size: 17px !important;
-}
-
-::ng-deep .ui-paginator {
-    background-color: white !important;
-    border: none;
-    padding-top: 10px;
-}
-
 
 /* סידור החיצים בפקד התאריך מימין לשמאל  */
 
@@ -223,16 +226,27 @@ tr:nth-child(odd) {
 }
 
 ::ng-deep .p-paginator-next,
-::ng-deep .p-paginator-prev{
+::ng-deep .p-paginator-prev {
     border: none !important;
     background: transparent !important;
 }
 
-::ng-deep .p-disabled{
+::ng-deep .p-disabled {
     cursor: not-allowed;
     opacity: 0.6;
 }
 
-::ng-deep .p-datatable-table tbody tr td{
+::ng-deep .p-datatable-table tbody tr td {
     padding: .25em .5em;
 }
+
+::ng-deep .p-sortable-column:not(.p-highlight) .sortIcon {
+    display: none;
+    color: #285c7e !important;
+}
+
+::ng-deep .p-sortable-column:hover .p-sorticon,
+  .p-sortable-column.p-highlight .sortIcon {
+    display: inline-block;
+    color: #285c7e !important;
+  }

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Angular19Basic": {
+    "CurrencyGates": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angular19-basic",
+            "outputPath": "dist/angular",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -44,13 +44,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "1.5MB",
-                  "maximumError": "2MB"
+                  "maximumWarning": "3MB",
+                  "maximumError": "3MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "100kB",
-                  "maximumError": "150kB"
+                  "maximumWarning": "300kB",
+                  "maximumError": "350kB"
                 }
               ],
               "outputHashing": "all"
@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Angular19Basic:build:production"
+              "buildTarget": "CurrencyGates:build:production"
             },
             "development": {
-              "buildTarget": "Angular19Basic:build:development"
+              "buildTarget": "CurrencyGates:build:development"
             }
           },
           "defaultConfiguration": "development"

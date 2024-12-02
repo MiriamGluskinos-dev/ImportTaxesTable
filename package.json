@@ -6,9 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:Angular18Basic": "node dist/angular18-basic/server/server.mjs",
-    "serve:ssr:Angular19Basic": "node dist/angular19-basic/server/server.mjs"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
