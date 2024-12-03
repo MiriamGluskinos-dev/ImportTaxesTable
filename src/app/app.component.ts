@@ -1,8 +1,9 @@
-import { Component, Directive, ElementRef, Renderer2 } from '@angular/core';
+import { Component, Directive, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Title } from "@angular/platform-browser";
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from './services/config.service';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Directive({
   selector: "[appHtmlreaderHeader]"
@@ -50,12 +51,31 @@ export class HtmlreaderDirectiveFooter {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss', '../styles.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  constructor(
+    private titleService: Title,
+    private config: PrimeNGConfig,
+  ) { }
 
+  ngOnInit() {
+    this.config.setTranslation({
+      dayNames: ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת"],
+      dayNamesShort: ["א", "ב", "ג", "ד", "ה", "ו", "ש"],
+      dayNamesMin: ["א", "ב", "ג", "ד", "ה", "ו", "ש"],
+      monthNames: [
+        "ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני",
+        "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"
+      ],
+      monthNamesShort: ["ינו", "פבר", "מרץ", "אפר", "מאי", "יונ", "יול", "אוג", "ספט", "אוק", "נוב", "דצמ"],
+      today: "היום",
+      clear: "נקה",
+      weekHeader: "שבוע"
+    });
+  }
   title: string = '';
   descriptionLines: string[] = [];
 
-  constructor(private titleService: Title) { }
+  // constructor() { }
 
   onActivate(event: any) {
     this.title = event.title;

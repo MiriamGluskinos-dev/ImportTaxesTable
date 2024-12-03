@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common'
 
-
 import { Observable } from 'rxjs/internal/Observable';
 
 import { CurrencyGate } from '../models/CurrencyGate';
@@ -50,7 +49,6 @@ export class CurrencyComponent implements OnInit {
 
     let tdate: Date = new Date();
     this.yearRange = (tdate.getFullYear() - 10).toString() + ':' + tdate.getFullYear();
-
 
     let mockData = [
       {
@@ -463,8 +461,6 @@ export class CurrencyComponent implements OnInit {
 
 
   }
-
-
 
   private callService(url: string, method: string): Observable<string> {
     return new Observable(observer => {

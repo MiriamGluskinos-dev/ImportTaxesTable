@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app/app.routes';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from "@angular/common/http";
 
 /* PrimeNG components */
 import { TableModule } from "primeng/table";
