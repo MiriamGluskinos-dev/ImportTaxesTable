@@ -30,7 +30,7 @@ export class CurrencyGate {
 
     get displayText(): string {
 
-        if (this.currencyTypeID == undefined)
+        if (this.currencyTypeID == '' || this.currencyTypeID == undefined)
             return this.currencyTypeName;
 
         return `${this.currencyTypeID} - ${this.currencyTypeName}`;
