@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { CurrencyComponent } from './currency/currency.component';
+import { SearchTableComponent } from './search-table/search-table.component';
 
 export const rootRouterConfig: Routes = [
-    { path: 'currencyGates', component: CurrencyComponent, pathMatch:'full' },
+    { path: 'searchTable', component: SearchTableComponent, pathMatch:'full' },
 ];

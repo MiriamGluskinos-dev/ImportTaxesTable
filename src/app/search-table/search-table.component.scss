@@ -1,0 +1,88 @@
+.table-responsive th, .table-responsive td{
+    padding: 5.5px !important;
+} 
+
+.table-responsive{
+    min-height: 350px;
+} 
+
+tr:nth-child(odd) {
+    background-color: #f9f9f9;
+} 
+
+::ng-deep .text-right{
+    text-align: right !important;
+}
+
+::ng-deep .text-center{
+    text-align: center !important;
+}
+
+ ::ng-deep .ui-dropdown-panel, ::ng-deep .ui-autocomplete-panel{
+    top:32.5px !important;
+    right: 0px;
+    width: 250px;
+}
+
+::ng-deep .form-control{
+    border:solid 1px #285c7e;
+    border-radius:7px !important;
+    height:32px;
+    background-color:#fff;
+    padding:0 5px 0 1.5em !important;
+} 
+
+@media (max-width: 640px) { 
+    tr{
+        border-top:solid 2px #285c7e;
+    }
+    td{
+        text-align: right !important
+    }
+}
+
+/* הסתרת אייקון החיפוש במסך קטן */
+@media (max-width: 780px) { 
+    .pi-search{
+        display: none;
+    }
+ }
+
+ /* הסתרת הפילטורים במסך קטן */
+ @media (max-width: 868px) { 
+    [inputStyleClass$='filter']{
+        display: none;
+    }
+ }
+
+/*למחוק לאחר עידכון הבוטסטרפ*/
+::ng-deep .w-100{
+    width: 100% !important;
+}
+
+::ng-deep .p-overlay{
+    height: 40px !important;
+}
+
+::ng-deep .p-autocomplete{
+    height: 40px !important;
+}
+
+::ng-deep .p-autocomplete-panel {
+    max-height: 200px;
+    overflow-y: auto;
+    text-align: right; 
+  }
+
+.rowDiv{
+    margin-bottom: 10 !important;
+}
+
+.excelDiv{
+    display: flex;
+    justify-content: end;
+
+    .excelStyle{
+        align-items: left;
+    }
+}

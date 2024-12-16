@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "CurrencyGates": {
+    "ImportTaxes": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "CurrencyGates:build:production"
+              "buildTarget": "ImportTaxes:build:production"
             },
             "development": {
-              "buildTarget": "CurrencyGates:build:development"
+              "buildTarget": "ImportTaxes:build:development"
             }
           },
           "defaultConfiguration": "development",
