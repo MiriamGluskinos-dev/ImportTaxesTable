@@ -30,6 +30,7 @@ export class SearchTableComponent implements OnInit {
   isSuggestionsVisible: boolean = false;
   isMainCategorySuggestionsVisible: boolean = false;
   isSecondCategorySuggestionsVisible: boolean = false;
+  isProductsSuggestionsVisible: boolean = false;
   selectedProductMain: any;
   selectedMainCategory: any;
   selectedCategory: any;
@@ -122,10 +123,12 @@ export class SearchTableComponent implements OnInit {
       autocomplete1: this.autoComplete1,
       autocomplete2: this.autoComplete2,
       autocomplete3: this.autoComplete3,
+      autoComplete4: this.autoComplete4,
     };
 
     this.autoComplete2.nativeElement.querySelector('button.p-autocomplete-dropdown')?.setAttribute('aria-label', 'פתיחת קטגוריה');
     this.autoComplete3.nativeElement.querySelector('button.p-autocomplete-dropdown')?.setAttribute('aria-label', 'פתיחת תת קטגוריה');
+    this.autoComplete4.nativeElement.querySelector('button.p-autocomplete-dropdown')?.setAttribute('aria-label', 'פתיחת מוצרים');
     // this.setPaginationAriaLabels();
   }
 
@@ -254,6 +257,8 @@ export class SearchTableComponent implements OnInit {
   @ViewChild('autoComplete1', { read: ElementRef }) autoComplete1!: ElementRef;
   @ViewChild('autoComplete2', { read: ElementRef }) autoComplete2!: ElementRef;
   @ViewChild('autoComplete3', { read: ElementRef }) autoComplete3!: ElementRef;
+  @ViewChild('autoComplete4', { read: ElementRef }) autoComplete4!: ElementRef;
+
   autoCompleteRefs!: { [key: string]: ElementRef };
 
   @HostListener('document:click', ['$event'])
@@ -261,12 +266,15 @@ export class SearchTableComponent implements OnInit {
     this.checkDropdownState('autocomplete1', event, 'isSuggestionsVisible');
     this.checkDropdownState('autocomplete2', event, 'isMainCategorySuggestionsVisible');
     this.checkDropdownState('autocomplete3', event, 'isSecondCategorySuggestionsVisible');
+    this.checkDropdownState('autocomplete4', event, 'isProductsSuggestionsVisible');
+
   }
 
   checkDropdownState(
     autocompleteId: string,
     event: MouseEvent,
-    visibilityState: 'isSuggestionsVisible' | 'isMainCategorySuggestionsVisible' | 'isSecondCategorySuggestionsVisible'
+    visibilityState: 'isSuggestionsVisible' | 'isMainCategorySuggestionsVisible' 
+    | 'isSecondCategorySuggestionsVisible' | 'isProductsSuggestionsVisible'
   ): void {
     const autocompleteElement = this.autoCompleteRefs[autocompleteId]?.nativeElement;
     const target = event.target as HTMLElement;

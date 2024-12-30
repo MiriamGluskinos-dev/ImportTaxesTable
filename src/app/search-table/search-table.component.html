@@ -1,7 +1,7 @@
 <app-page-header [pageTitle]="title" [descriptionLines]="descriptionLines"></app-page-header>
 
 <!-- Main Search -->
-<div class="row row-gov">
+<div class="row row-gov row-container">
   <div class="col-10 col-lg-6 lg-mb-30 xs-mb-25 rowDiv">
     <form class="form-inline w-100" role="form">
       <div class="form-group has-feedback w-100" style="position: relative; display: inline-block">
@@ -26,7 +26,7 @@
   <div class="col-2 col-lg-6 lg-mb-30 xs-mb-25 rowDiv excelDiv">
     <p class="nounderline pull-left pointer ltr excelStyle" title="Excel-CSV" aria-label="להורדה בפורמט אקסל או CSV"
       (click)="dt.exportCSV()">
-      <img src="../../assets/images/excel.png" alt="Excel Icon" class="blue-txt social-size"
+      <img src="assets/images/excel.png" alt="Excel Icon" class="blue-txt social-size"
         style="width: 45px; height: 40px;" tabindex="14">
     </p>
   </div>
@@ -70,13 +70,13 @@
             <!-- Filter product (product field)-->
             <ng-container *ngSwitchCase="'ProductLevel3'">
               <label for="productSearchFilter" hidden>חפש מוצר</label>
-              <p-autoComplete *ngIf="selectedCategory" inputId="productSearchFilter" [suggestions]="productList"
+              <p-autoComplete #autoComplete4 *ngIf="selectedCategory" inputId="productSearchFilter" [suggestions]="productList"
                 field="ProductLevel3" [dropdown]="true" [required]="true" [size]="30" scrollHeight="400px"
-                placeholder="kkkהכל" [minLength]="1"
+                placeholder="הכל" [minLength]="1" [appendTo]="'body'"
                 inputStyleClass="form-control txt gray-txt search-input text-right filter" [(ngModel)]="selectedProduct"
                 (completeMethod)="searchSubProduct()" (onClear)="searchSubProduct()" (onSelect)="searchSubProduct()"
                 (onDropdownClick)="initProductList(gridData)" autoHighlight
-                [attr.aria-expanded]="isSecondCategorySuggestionsVisible ? true : false" [minLength]="0">
+                [attr.aria-expanded]="isProductsSuggestionsVisible ? true : false" [minLength]="0">
               </p-autoComplete>
             </ng-container>
 
