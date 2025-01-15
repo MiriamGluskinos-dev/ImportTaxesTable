@@ -9,12 +9,13 @@
         <label for="productSearchTxt" hidden>חפש מוצר</label>
         <span class="pi pi-search form-control-feedback dark-blue-txt xs-p-7" style="position: absolute;left:0"></span>
 
-        <p-autoComplete #autoComplete1 name="productSearchTxt" inputId="productSearchTxt" styleClass="w-100"
+        <p-autoComplete #autoComplete1 name="productSearchTxt" inputId="productSearchTxt" styleClass="w-100" styleClass="custom-autocomplete"
           inputStyleClass="reforma w-100 form-control txt gray-txt search-input text-right" placeholder="חפש מוצר...."
-          field="ProductLevel3" [size]="30" [minLength]="1" [suggestions]="filteredData" role="combobox" aria-autocomplete="both"
+          field="ProductLevel3" [size]="30" [minLength]="1" [suggestions]="filteredData" role="combobox"
+          [appendTo]="'body'" aria-autocomplete="both"
           [(ngModel)]="selectedProductMain" (completeMethod)="clearFilter(); searchData();" (onClear)="searchData()"
-          (onSelect)="clearFilter(); searchData();" autoHighlight tabindex="12" [attr.aria-expanded]="isSuggestionsVisible ? true : false">
-          <ng-template let-prod pTemplate="item" 
+          (onSelect)="clearFilter(); searchData();" autoHighlight [attr.aria-expanded]="isSuggestionsVisible ? true : false">
+          <ng-template let-prod pTemplate="item"
           [dropdown]="true" >
             <span class="ng-star-inserted">{{prod.ProductLevel3}} <mark
                 class="txt gray-txt white">{{prod.searchText}}</mark></span>
@@ -27,7 +28,7 @@
     <p class="nounderline pull-left pointer ltr excelStyle" title="Excel-CSV" aria-label="להורדה בפורמט אקסל או CSV"
       (click)="dt.exportCSV()">
       <img src="assets/images/excel.png" alt="Excel Icon" class="blue-txt social-size"
-        style="width: 45px; height: 40px;" tabindex="14">
+        style="width: 45px; height: 40px;" tabindex="0">
     </p>
   </div>
 </div>
@@ -47,10 +48,10 @@
               <label for="mainCategoryFilter" hidden>חפש קטגוריה ראשית</label>
               <p-autoComplete #autoComplete2 inputId="mainCategoryFilter" [suggestions]="mainCategoryList" field="ProductLevel1"
                 [dropdown]="true" [required]="true" scrollHeight="400px" [size]="30" placeholder="הכל" [minLength]="1"
-                inputStyleClass="form-control txt gray-txt search-input text-right filter"
+                inputStyleClass="form-control txt gray-txt search-input text-right filter" aria-autocomplete="both"
                 [(ngModel)]="selectedMainCategory" (completeMethod)="searchMainCategory()" [dropdown]="true"
                 (onClear)="searchMainCategory()" (onSelect)="searchMainCategory()" (onDropdownClick)="initMainCategoryList(gridData);"
-                  autoHighlight [appendTo]="'body'"
+                  autoHighlight [appendTo]="'body'" styleClass="custom-autocomplete"
                 [panelStyle]="{ 'right': '0', 'position': 'absolute' }" [attr.aria-expanded]="isMainCategorySuggestionsVisible ? true : false"
                 >
               </p-autoComplete>
@@ -60,9 +61,9 @@
               <label for="categorySearchFilter" hidden>חפש קטגוריה משנית</label>
               <p-autoComplete #autoComplete3 inputId="categorySearchFilter" [suggestions]="categoryList" field="ProductLevel2"
                 [dropdown]="true" [required]="true" [size]="30" scrollHeight="400px" placeholder="הכל" [minLength]="1"
-                inputStyleClass="form-control txt gray-txt search-input text-right filter"
+                inputStyleClass="form-control txt gray-txt search-input text-right filter" aria-autocomplete="both"
                 [(ngModel)]="selectedCategory" (completeMethod)="searchSubCategory();" (onClear)="searchSubCategory()"
-                (onSelect)="searchSubCategory()" (onDropdownClick)="initCategoryList(gridData);" autoHighlight
+                (onSelect)="searchSubCategory()" (onDropdownClick)="initCategoryList(gridData);" autoHighlight styleClass="custom-autocomplete"
                 [attr.aria-expanded]="isSecondCategorySuggestionsVisible ? true : false">
               </p-autoComplete>
             </ng-container>
@@ -72,10 +73,10 @@
               <label for="productSearchFilter" hidden>חפש מוצר</label>
               <p-autoComplete #autoComplete4 *ngIf="selectedCategory" inputId="productSearchFilter" [suggestions]="productList"
                 field="ProductLevel3" [dropdown]="true" [required]="true" [size]="30" scrollHeight="400px"
-                placeholder="הכל" [minLength]="1" [appendTo]="'body'"
+                placeholder="הכל" [minLength]="1" [appendTo]="'body'" styleClass="custom-autocomplete"
                 inputStyleClass="form-control txt gray-txt search-input text-right filter" [(ngModel)]="selectedProduct"
                 (completeMethod)="searchSubProduct()" (onClear)="searchSubProduct()" (onSelect)="searchSubProduct()"
-                (onDropdownClick)="initProductList(gridData)" autoHighlight
+                (onDropdownClick)="initProductList(gridData)" autoHighlight aria-autocomplete="both"
                 [attr.aria-expanded]="isProductsSuggestionsVisible ? true : false" [minLength]="0">
               </p-autoComplete>
             </ng-container>
@@ -87,7 +88,7 @@
       <!-- Data -->
       <ng-template pTemplate="body" let-rowData let-columns="columns">
         <tr>
-          <td class="dark-grey-txt description-txt" *ngFor="let col of columns;let i = index" [attr.tabindex]="0"
+          <td class="dark-grey-txt description-txt" *ngFor="let col of columns;let i = index"
             [ngClass]="(col.field == 'UpTo75_' || col.field == 'From500_To1000_' || col.field == 'From500_To1000_' || col.field == 'Over1000_') ? 'text-center' : ''">
             {{rowData[col.field]}}
           </td>
