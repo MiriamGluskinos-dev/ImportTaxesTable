@@ -98,11 +98,11 @@ tr:nth-child(odd) {
 }
 
 ::ng-deep .custom-autocomplete input:focus {
-    box-shadow: 0 0 0 2px #285c7e;
+    box-shadow: 0 0 0 2px #285c7e !important;
     width: 100% !important;
 }
 
 ::ng-deep .p-autocomplete-panel .p-autocomplete-item:hover {
     background-color: #d3d3d3  !important;
-    box-shadow: 0 0 0 2px #285c7e;
+    box-shadow: 0 0 0 2px #285c7e !important;
 }
