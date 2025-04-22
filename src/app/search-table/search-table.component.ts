@@ -238,7 +238,7 @@ export class SearchTableComponent implements OnInit {
           return (aIndex < bIndex) ? -1 : ((aIndex > bIndex) ? 1 : 0);
         });
     }
-    this.resetPaging();    
+    this.resetPaging();
   }
 
   clearFilter() {
@@ -257,8 +257,16 @@ export class SearchTableComponent implements OnInit {
   @ViewChild('autoComplete1', { read: ElementRef }) autoComplete1!: ElementRef;
   @ViewChild('autoComplete2', { read: ElementRef }) autoComplete2!: ElementRef;
   @ViewChild('autoComplete3', { read: ElementRef }) autoComplete3!: ElementRef;
-  @ViewChild('autoComplete4', { read: ElementRef }) autoComplete4!: ElementRef;
 
+  private autoComplete4!: ElementRef;
+
+  @ViewChild('autoComplete4', { read: ElementRef })
+  set autoComplete4Setter(el: ElementRef | undefined) {
+    if (el) {
+      this.autoComplete4 = el;
+      this.autoCompleteRefs['autoComplete4'] = el;
+    }
+  }
   autoCompleteRefs!: { [key: string]: ElementRef };
 
   @HostListener('document:click', ['$event'])
@@ -273,10 +281,11 @@ export class SearchTableComponent implements OnInit {
   checkDropdownState(
     autocompleteId: string,
     event: MouseEvent,
-    visibilityState: 'isSuggestionsVisible' | 'isMainCategorySuggestionsVisible' 
-    | 'isSecondCategorySuggestionsVisible' | 'isProductsSuggestionsVisible'
+    visibilityState: 'isSuggestionsVisible' | 'isMainCategorySuggestionsVisible'
+      | 'isSecondCategorySuggestionsVisible' | 'isProductsSuggestionsVisible'
   ): void {
     const autocompleteElement = this.autoCompleteRefs[autocompleteId]?.nativeElement;
+    if (!autocompleteElement) return;
     const target = event.target as HTMLElement;
     const isInsideAutocomplete = autocompleteElement.contains(target);
     setTimeout(() => {
@@ -301,7 +310,7 @@ export class SearchTableComponent implements OnInit {
 
       const paginatorButtons = paginator.querySelectorAll('button');
       paginatorButtons.forEach((button: HTMLButtonElement) => {
-        if (button.disabled) 
+        if (button.disabled)
           button.setAttribute('aria-disabled', 'true');
         else button.setAttribute('aria-disabled', 'false');
       });
