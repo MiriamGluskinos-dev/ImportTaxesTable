@@ -93,7 +93,7 @@
       <ng-template pTemplate="body" let-rowData let-columns="columns">
         <tr>
           <td class="dark-grey-txt description-txt" *ngFor="let col of columns;let i = index"
-            [ngClass]="(col.field == 'UpTo75_' || col.field == 'From500_To1000_' || col.field == 'From500_To1000_' || col.field == 'Over1000_') ? 'text-center' : ''">
+            [ngClass]="(col.field == 'TaxLevel1_' || col.field == 'TaxLevel3_' || col.field == 'TaxLevel3_' || col.field == 'TaxLevel4_') ? 'text-center' : ''">
             {{rowData[col.field]}}
           </td>
         </tr>

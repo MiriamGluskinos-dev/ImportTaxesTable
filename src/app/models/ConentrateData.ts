@@ -5,29 +5,29 @@ export class ConcentratedData {
     // public Category1: string;
     // public Category2: string;
     // public product: string;
-    // public UpTo75_: string;
-    // public From75_To500_: string;
-    // public From500_To1000_: string;
-    // public Over1000_: string;
+    // public TaxLevel1_: string;
+    // public TaxLevel2_: string;
+    // public TaxLevel3_: string;
+    // public TaxLevel4_: string;
 
     // constructor(
     //     ID: string,
     //     mainCategory: string,
     //     childCategory: string,
     //     productName: string,
-    //     UpTo75: string,
-    //     From75$To500$: string,
-    //     From500$To1000$: string,
-    //     Over1000: string
+    //     TaxLevel1: string,
+    //     TaxLevel2: string,
+    //     TaxLevel3: string,
+    //     TaxLevel4: string
     // ) {
     //     this.ID =  ID;
     //     this.Category1 = mainCategory;
     //     this.Category2 = childCategory;
     //     this.product = productName;
-    //     this.UpTo75_ = UpTo75;
-    //     this. From75_To500_ =  From75$To500$;
-    //     this.From500_To1000_ = From500$To1000$;
-    //     this.Over1000_ = Over1000;
+    //     this.TaxLevel1_ = TaxLevel1;
+    //     this. TaxLevel2_ =  TaxLevel2;
+    //     this.TaxLevel3_ = TaxLevel3;
+    //     this.TaxLevel4_ = TaxLevel4;
 
     // }
 
@@ -50,19 +50,19 @@ export class ConcentratedData {
         mainCategory: string,
         childCategory: string,
         productName: string,
-        UpTo75: string,
-        From75$To500$: string,
-        From500$To1000$: string,
-        Over1000: string
+        TaxLevel1: string,
+        TaxLevel2: string,
+        TaxLevel3: string,
+        TaxLevel4: string
     ) {
         this.ID =  ID;
         this.ProductLevel1 = mainCategory;
         this.ProductLevel2 = childCategory;
         this.ProductLevel3 = productName;
-        this.Category1Taxes1 = UpTo75;
-        this. Category1Taxes2 =  From75$To500$;
-        this.Category1Taxes3 = From500$To1000$;
-        this.Category1Taxes4 = Over1000;
+        this.Category1Taxes1 = TaxLevel1;
+        this. Category1Taxes2 =  TaxLevel2;
+        this.Category1Taxes3 = TaxLevel3;
+        this.Category1Taxes4 = TaxLevel4;
 
     }
 
