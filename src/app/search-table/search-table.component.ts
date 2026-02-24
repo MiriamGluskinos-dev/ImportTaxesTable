@@ -79,8 +79,8 @@ export class SearchTableComponent implements OnInit {
       { field: 'ProductLevel1', header: 'קטגוריה ראשית' },
       { field: 'ProductLevel2', header: 'קטגוריה משנית' },
       { field: 'ProductLevel3', header: 'מוצר' },
-      { field: 'Category1Taxes1', header: 'עד 150$' },
-      { field: 'Category1Taxes2', header: 'מ151$ עד 500$' },
+      { field: 'Category1Taxes1', header: 'עד 75$' },
+      { field: 'Category1Taxes2', header: '76$ עד 500$' },
       { field: 'Category1Taxes3', header: 'מ501$ עד 1000$' },
       { field: 'Category1Taxes4', header: 'מעל 1000$' },
 
